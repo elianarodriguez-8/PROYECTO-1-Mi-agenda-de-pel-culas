@@ -182,6 +182,10 @@ def ejecutar_decidir_invitar(p1: dict, p2: dict, p3: dict, p4: dict, p5: dict)->
             print("Se puede invitar a esta persona")
         else:
             print("No se puede invitar a esta persona")
+def ejecutar_consultar_duracion_promedio_8(p1: dict, p2: dict, p3: dict, p4: dict, p5: dict, p6: dict, p7: dict, p8: dict) -> None:
+    promedio_total = mod.duracion_promedio_8_peliculas(p1, p2, p3, p4, p5, p6, p7, p8)
+
+    print("La duración promedio de las 8 películas es:", promedio_total)
   
 def iniciar_aplicacion():
     """Inicia la ejecución de la aplicación por consola.
@@ -194,6 +198,10 @@ def iniciar_aplicacion():
     pelicula3 = mod.crear_pelicula("Icarus",  "Documental, Suspenso", 122, 2017, '18+', 800, "Domingo")
     pelicula4 = mod.crear_pelicula("Inception",  "Acción, Drama", 148, 2010, '13+', 1300, "Lunes")
     pelicula5 = mod.crear_pelicula("The Empire Strikes Back",  "Familiar, Ciencia-Ficción", 124, 1980, '7+', 1415, "Miércoles")   
+    # NUEVAS PELICULAS
+    pelicula6 = mod.crear_pelicula("Interstellar", "Ciencia-Ficcion, Drama", 169, 2014, "13+", 2000, "Martes")
+    pelicula7 = mod.crear_pelicula("Coco", "Familiar, Animacion", 105, 2017, "Todos", 1800,"Jueves")
+    pelicula8 = mod.crear_pelicula("Parasitos", "Drama, Suspenso", 132, 2019, "16+", 1500, "Sabado")
     
     ejecutando = True
     while ejecutando:            
@@ -217,13 +225,25 @@ def iniciar_aplicacion():
         print("Pelicula 5")
         mostrar_informacion_pelicula(pelicula5)
         print("-"*50)
+
+        print("Pelicula 6")
+        mostrar_informacion_pelicula(pelicula6)
+        print("-"*50)
+
+        print("Pelicula 7")
+        mostrar_informacion_pelicula(pelicula7)
+        print("-"*50)
+
+        print("Pelicula 8")
+        mostrar_informacion_pelicula(pelicula8)
+        print("-"*50)
         
-        ejecutando = mostrar_menu_aplicacion(pelicula1, pelicula2, pelicula3, pelicula4, pelicula5)
+        ejecutando = mostrar_menu_aplicacion(pelicula1, pelicula2, pelicula3, pelicula4, pelicula5, pelicula6, pelicula7, pelicula8)
 
         if ejecutando:
             input("Presione cualquier tecla para continuar ... ")
 
-def mostrar_menu_aplicacion(p1: dict, p2: dict, p3: dict, p4:dict, p5:dict) -> bool:
+def mostrar_menu_aplicacion(p1: dict, p2: dict, p3: dict, p4:dict, p5:dict , p6:dict , p7: dict , p8:dict) -> bool:
     """Le muestra al usuario las opciones de ejecución disponibles.
     Parametros:
         p1 (dict): Diccionario que contiene la informacion de la pelicula 1.
@@ -245,6 +265,7 @@ def mostrar_menu_aplicacion(p1: dict, p2: dict, p3: dict, p4:dict, p5:dict) -> b
     print(" 5 - Reagendar pelicula")
     print(" 6 - Verificar si se puede invitar a alguien")    
     print(" 7 - Salir de la aplicacion")
+    print(" 8 - Consultar duración promedio de 8 películas")
 
     opcion_elegida = input("Ingrese la opcion que desea ejecutar: ").strip()
     
@@ -264,6 +285,8 @@ def mostrar_menu_aplicacion(p1: dict, p2: dict, p3: dict, p4:dict, p5:dict) -> b
         ejecutar_decidir_invitar(p1, p2, p3, p4, p5) 
     elif opcion_elegida == "7":
         continuar_ejecutando = False
+    elif opcion_elegida == "8":
+        ejecutar_consultar_duracion_promedio_8(p1, p2, p3, p4, p5, p6, p7, p8)
     else:
         print("La opcion " + opcion_elegida + " no es una opcion valida.")
     

@@ -275,6 +275,15 @@ def decidir_invitar(peli: dict, edad_invitado: int, autorizacion_padres: bool)->
         return autorizacion_padres
     if clasificacion == "7+" and edad_invitado < 7:
         return autorizacion_padres
+    
+def duracion_promedio_8_peliculas(p1: dict, p2: dict, p3: dict, p4: dict, p5: dict, p6: dict, p7: dict, p8: dict) -> str:
+    total = (p1["duracion"] + p2["duracion"] + p3["duracion"] +  p4["duracion"] + p5["duracion"] + p6["duracion"] + p7["duracion"] + p8["duracion"])
+
+    promedio = total // 8
+    horas = promedio // 60
+    minutos = promedio % 60
+
+    return str(horas).zfill(2) + ":" + str(minutos).zfill(2)
 
     return True
 
